@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title>Controlling Users</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+        <script type="text/javascript">
+            angular.module('app', []);
+
+            angular.module('app').controller('User', userController);
+
+            function userController() {
+                var vm = this;
+                vm.users = [];
+                vm.addUser = addUser;
+                vm.deleteUser = deleteUser;
+
+                function addUser(user) {
+                    vm.users.push({firstName: vm.firstName,
+                            lastName: vm.lastName,
+                            favLanguage: vm.favLanguage});
+                }
+
+                function deleteUser(index) {
+                    vm.users.splice(index, 1);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div ng-controller="User as UC">
+            <form>
+                <fieldset>
+                    <legend>Users Controller</legend>
+                    <label>
+                        First Name <input type="text" ng-model="UC.firstName">
+                    </label>
+                    <label>
+                        Last Name <input type="text" ng-model="UC.lastName">
+                    </label>
+                    <label>
+                        Favorite Language <input type="text" ng-model="UC.favLanguage">
+                    </label>
+                    <input type="submit" value="Create User" ng-click="UC.addUser()">
+                    <div ng-show="UC.users.length > 0">
+                        <table style="border: 1px solid #ccc; border-spacing: 1px; border-collapes: combine; width: 100%">
+                            <thead style="color: #000; background-color: #ddd">
+                                <tr>
+                                    <td>
+                                        First Name
+                                    </td>
+                                    <td>
+                                        Last Name
+                                    </td>
+                                    <td>
+                                        Favorite Language
+                                    </td>
+                                    <td>
+                                        Actions
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="user in UC.users track by $index">
+                                    <td ng-bind="user.firstName">
+                                    </td>
+                                    <td ng-bind="user.lastName">
+                                    </td>
+                                    <td ng-bind="user.favLanguage">
+                                    </td>
+                                    <td>
+                                        <button type="button" ng-click="UC.deleteUser($index)">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

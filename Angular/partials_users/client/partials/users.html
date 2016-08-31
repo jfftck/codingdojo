@@ -1,0 +1,29 @@
+<div ng-controller="UserListsController as ULC">
+    <div ng-show="ULC.users.length > 0">
+        <table style="border: 1px solid #ccc; border-spacing: 1px; border-collapes: combine; width: 100%">
+            <thead style="color: #000; background-color: #ddd">
+                <tr>
+                    <td>
+                        First Name
+                    </td>
+                    <td>
+                        Last Name
+                    </td>
+                    <td>
+                        Favorite Language
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in ULC.users track by $index">
+                    <td ng-bind="user.firstName">
+                    </td>
+                    <td ng-bind="user.lastName">
+                    </td>
+                    <td ng-bind="user.favLang">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div ng-controller="PlayersController as PC">
+    <form>
+        <label>Name <input type="text" ng-model="PC.name"></label>
+        <input type="submit" name="name" value="Add Player" ng-click="PC.add()">
+    </form>
+    <div ng-show="PC.players.length">
+        <table style="border: 1px solid #ccc; border-spacing: 1px; border-collapes: combine; width: 100%">
+            <thead style="color: #000; background-color: #ddd">
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        Actions
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in PC.players track by $index">
+                    <td ng-bind="player.name">
+                    </td>
+                    <td>
+                        <button type="button" ng-click="PC.delete($index)">
+                            Remove Player
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div ng-controller="BucketsShowController as BSC">
+    <div style="border: 1px solid #ddd">
+        <span>Bucket List</span>
+        <button type="button" ng-click="BSC.goBack()">
+            Home
+        </button>
+        <button type="button" ng-click="BSC.logout()">Logout</button>
+    </div>
+    <h2><span ng-bind="BSC.name"></span>'s Bucket List</h2>
+    <h3>Done</h3>
+    <div ng-repeat="bucket in BSC.buckets">
+        <label style="display: block" ng-style="BSC.checkStyle(bucket._id)" ng-init="BSC.checked[bucket._id] = bucket.complete" ng-if="bucket.complete">
+            <input type="checkbox" ng-checked="bucket.complete" disabled="disabled">
+            <span style="background-color: #9bf; color: #000; padding: 0.1em 0.5em; border-radius: 4px;" ng-bind="bucket.tagged"></span>
+            <span style="font-weight: bold; font-size: 110%;" ng-bind="bucket.title"></span>
+            <span ng-bind="bucket.description"></span>
+            <span ng-bind="bucket.createdAt | date: 'mediumDate'" style="color: #999; font-size: 80%;"></span>
+        </label>
+    </div>
+    <h3>Pending</h3>
+    <div ng-repeat="bucket in BSC.buckets">
+        <label style="display: block" ng-style="BSC.checkStyle(bucket._id)" ng-init="BSC.checked[bucket._id] = bucket.complete" ng-if="!bucket.complete">
+            <input type="checkbox" ng-checked="bucket.complete" disabled="disabled">
+            <span style="background-color: #9bf; color: #000; padding: 0.1em 0.5em; border-radius: 4px;" ng-bind="bucket.tagged"></span>
+            <span style="font-weight: bold; font-size: 110%;" ng-bind="bucket.title"></span>
+            <span ng-bind="bucket.description"></span>
+            <span ng-bind="bucket.createdAt | date: 'mediumDate'" style="color: #999; font-size: 80%;"></span>
+        </label>
+    </div>
+</div>

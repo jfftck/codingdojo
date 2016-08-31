@@ -1,0 +1,20 @@
+{
+  "name": "partials_users",
+  "description": "Angular Partials",
+  "main": "server.js",
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "contra": "a#^1.9.4",
+    "angular": "^1.5.7",
+    "angular-route": "^1.5.7"
+  }
+}

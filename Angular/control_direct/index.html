@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title>Angular</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+        <script type="text/javascript">
+            var App = angular.module('app', []);
+            App.controller('foodController', function() {
+                var vm = this;
+                vm.favFood = '';
+                vm.favFoods = [];
+                vm.addFood = addFood;
+                vm.filter = ''
+
+                function addFood() {
+                    if (!vm.favFood) {
+                        return;
+                    }
+
+                    vm.favFoods.push(vm.favFood);
+                    vm.favFood = '';
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <div ng-controller="foodController as FC" ng-init="FC.favFood='Chinese'">
+            <form ng-submit="FC.addFood()" style="display: block">
+                <label>Favorite Food: <input type="text" ng-model="FC.favFood"></label>
+                <input type="submit" value="Add Food" ng-click="FC.addFood()" ng-hide="FC.favFood == ''">
+                <input type="text" ng-model="FC.filter">
+            </form>
+            <div style="float: right; width: 10em;border: 1px solid #ddd;" ng-show="FC.favFoods != []">
+                <div ng-repeat="food in FC.favFoods | filter:FC.filter">
+                    <span ng-bind="food"></span>
+                </div>
+            </div>
+            <div ng-if="FC.favFood">
+                Currently typing: <span ng-bind="FC.favFood"></span>
+            </div>
+        </div>
+    </body>
+</html>

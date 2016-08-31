@@ -1,0 +1,73 @@
+table {
+    border: 1px solid #ccc;
+    border-spacing: 1px;
+    border-collapes: combine;
+    width: 100%;
+}
+
+thead {
+    color: #000;
+    background-color: #ddd;
+}
+
+label {
+    display: block;
+    clear: both;
+}
+
+input[type=text],
+textarea {
+    width: 25em;
+}
+
+.nav {
+    box-shadow: 0 1px 4px #000;
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+    margin-bottom: 1em;
+}
+
+.end {
+    float: right;
+    clear: both;
+}
+
+.centered {
+    margin: auto;
+}
+
+.gamebox {
+    width: 30em;
+}
+
+.game {
+    background-color: #eee;
+    box-shadow: 0 1 4px #000;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 0.2em 0.5em;
+    box-shadow: 0 1px 4px #000;
+}
+
+.play {
+    display: block;
+    background-color: #09b;
+    color: #fff;
+    border: 1px solid #068;
+    font-size: 140%;
+    font-weight: bold;
+}
+
+.message {
+    background-color: #0b0;
+    color: #fff;
+    font-size: 120%;
+    font-weight: bold;
+    box-shadow: 0 1px 4px #000;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.error {
+    background-color: #b00 !important;
+}

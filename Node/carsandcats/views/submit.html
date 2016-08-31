@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Image Viewr</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+        <script type="text/javascript">
+            function get(name){
+                if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search)) {
+                    return decodeURIComponent(name[1]);
+                }
+            }
+
+            function setName(name) {
+                document.getElementById('name').innerHTML = name;
+            }
+        </script>
+    </head>
+    <body onload="setName(get('name'));">
+        <h1>
+            Add New <span id='name'></span> Image <span class="link">
+                <a href="./../../">Home</a>
+            </span>
+        </h1>
+        <form>
+            <label>Image: <input type="file" name="name" value=""></label>
+            <input type="button" name="name" value="Upload">
+        </form>
+    </body>
+</html>

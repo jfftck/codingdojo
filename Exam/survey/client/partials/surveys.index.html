@@ -1,0 +1,45 @@
+<div ng-controller="SurveysIndexController as SIC">
+    <div style="text-align: right">
+        <a href="#/survey">Create a New Poll</a>
+        <a href="#/" ng-click="SIC.logout()">Logout</a>
+    </div>
+    <h1>Current Polls</h1>
+    <div style="text-align: right">
+        <input type="text" placeholder="Search" ng-model="SIC.filter.question">
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Survey Question
+                </td>
+                <td>
+                    Date Posted
+                </td>
+                <td>
+                    Action
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="survey in SIC.surveys | filter: SIC.filter">
+                <td ng-bind="survey.name"></td>
+                <td>
+                    <a href="#/survey/{{survey._id}}" ng-bind="survey.question">
+                    </a>
+                </td>
+                <td ng-bind="survey.createdAt"></td>
+                <td>
+                    <div ng-if="FIC.name == survey.name">
+                        <button type="button" ng-click="SIC.delete(survey)">
+                            Delete
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

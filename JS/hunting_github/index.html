@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>GitHub Name</title>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript">
+            function displayName(response) {
+                console.log(response);
+                $('#realName').text(response['name']);
+            }
+
+            $(document).ready(function() {
+                $('#button').click(function() {
+                    $.get('https://api.github.com/users/' + $('#name').val(), displayName);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <label>User Name: <input type="text" id="name" value=""></label>
+        <button type="button" id="button">Get Name</button>
+        <div id='realName'></div>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Button Fun (Plain Javascript)</title>
+    </head>
+    <body>
+        <button id='customButton' style='color: blue' data-color='blue'>Javascript</button>
+        <script type='text/javascript'>
+            function MagicButton(bttn) {
+                bttn.addEventListener('click', function() {
+                    if (bttn.getAttribute('data-color') == 'blue') {
+                        bttn.setAttribute('data-color', 'red');
+                        bttn.style.color = 'red';
+                    } else {
+                        bttn.setAttribute('data-color', 'blue');
+                        bttn.style.color = 'blue';
+                    }
+                });
+
+                bttn.addEventListener('mouseover', function() {
+                    bttn.style.color = 'green';
+                });
+
+                bttn.addEventListener('mouseout', function() {
+                    bttn.style.color = bttn.getAttribute('data-color');
+                });
+
+                return button;
+            }
+
+            document.body.addEventListener('keypress', function(e) {
+                if (e.keyCode == 13) {
+                    var bttn = document.createElement('button');
+
+                    bttn.innerHTML = 'New Button';
+                    bttn.style.color = 'blue';
+                    bttn.setAttribute('data-color', 'blue');
+
+                    document.body.appendChild(bttn);
+
+                    MagicButton(bttn);
+                }
+            });
+
+            MagicButton(document.getElementById('customButton'));
+        </script>
+    </body>
+</html>

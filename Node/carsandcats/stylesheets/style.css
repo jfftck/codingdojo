@@ -1,0 +1,56 @@
+html,
+body {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, Arial, serif;
+}
+
+h1 {
+    background-color: #555;
+    color: #fff;
+    padding: 0.2em 1em;
+    box-shadow: 0 -2px 4px 4px #000;
+}
+
+h1 .link {
+    font-size: 50%;
+    float: right;
+    color: #acf;
+}
+
+h1 .link a {
+    color: #abf;
+    padding: 0.2em 1em;
+}
+
+h1 .link a:hover {
+    background-color: #015;
+}
+
+.nav {
+    display: block;
+}
+
+.nav li {
+    display: block;
+}
+
+.group {
+    padding: 2.5em;
+}
+
+img {
+    transition: transform 0.5s, box-shadow 0.5s;
+    margin: 1em;
+}
+
+img:hover {
+    z-index: 100;
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px #000;
+}
+
+a {
+    color: #0af;
+}

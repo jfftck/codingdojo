@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Players &amp; Teams</title>
+        <script type="text/javascript" src="/angular/angular.js"></script>
+        <script type="text/javascript" src="angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="/app/app.js"></script>
+        <script type="text/javascript" src="/app/routes.js"></script>
+        <script type="text/javascript" src="/app/players/players.fact.js"></script>
+        <script type="text/javascript" src="/app/players/players.ctrl.js"></script>
+        <script type="text/javascript" src="/app/teams/teams.fact.js"></script>
+        <script type="text/javascript" src="/app/teams/teams.ctrl.js"></script>
+        <script type="text/javascript" src="/app/associations/associations.ctrl.js"></script>
+    </head>
+    <body ng-app="app">
+        <a href="#/players">Players</a>
+        <a href="#/teams">Teams</a>
+        <a href="#/associations">Associations</a>
+        <div ng-view="">
+        </div>
+    </body>
+</html>

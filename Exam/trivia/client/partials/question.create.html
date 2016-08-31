@@ -1,0 +1,49 @@
+<div ng-controller="QuestionsController as QC">
+    <div class="nav">
+        <div class="end">
+            <button type="button" ng-click="QC.logout()">
+                Logout
+            </button>
+        </div>
+        <button type="button" ng-click="QC.home()">
+            Home
+        </button>
+        <button type="button" disabled="disabled">
+            Add a Question
+        </button>
+    </div>
+    <div class="gamebox centered">
+        <h1>New Question</h1>
+        <form>
+            <label>
+                Question
+                <div class="end">
+                    <textarea rows="4" cols="40" ng-model="QC.trivia.question">
+                    </textarea>
+                </div>
+            </label>
+            <label>
+                Correct Answer
+                <div class="end">
+                    <input type="text" ng-model="QC.trivia.correctAnswer">
+                </div>
+            </label>
+            <label>
+                Fake Answer 1
+                <div class="end">
+                    <input type="text" ng-model="QC.trivia.fake1">
+                </div>
+            </label>
+            <label>
+                Fake Answer 2
+                <div class="end">
+                    <input type="text" ng-model="QC.trivia.fake2">
+                </div>
+            </label>
+            <div class="end">
+                <input type="button" value="Cancel" ng-click="QC.home()">
+                <input type="submit" value="Add Question" ng-click="QC.create()">
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div ng-controller="TeamsController as TC">
+    <form>
+        <label>Name <input type="text" ng-model="TC.name"></label>
+        <input type="submit" value="Add New Team" ng-click="TC.add()">
+    </form>
+    <div ng-show="TC.teams.length">
+        <table style="border: 1px solid #ccc; border-spacing: 1px; border-collapes: combine; width: 100%">
+            <thead style="color: #000; background-color: #ddd">
+                <tr>
+                    <td>
+                        Team Name
+                    </td>
+                    <td>
+                        Actions
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="team in TC.teams track by $index">
+                    <td ng-bind="team.name"></td>
+                    <td>
+                        <button type="button" ng-click="TC.delete($index)">
+                            Remove Team
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

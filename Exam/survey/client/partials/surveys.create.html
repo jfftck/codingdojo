@@ -1,0 +1,14 @@
+<div ng-controller="SurveysCreateController as SCC">
+    <div style="text-align: right">
+        <a href="#/surveys">Cancel</a>
+    </div>
+    <h1>Put the Question and Options here:</h1>
+    <form>
+        <label>Question <input type="text" ng-model='SCC.survey.question'></label><br>
+        <label>Option 1 <input type="text" ng-model='SCC.survey.option1.option'></label><br>
+        <label>Option 2 <input type="text" ng-model='SCC.survey.option2.option'></label><br>
+        <label>Option 3 <input type="text" ng-model='SCC.survey.option3.option'></label><br>
+        <label>Option 4 <input type="text" ng-model='SCC.survey.option4.option'></label><br>
+        <input type="submit" value="Create Poll" ng-click="SCC.create()">
+    </form>
+</div>

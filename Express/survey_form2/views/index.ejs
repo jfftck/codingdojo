@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dojo Survey</title>
+        <link rel="stylesheet" href="/styles/style.css" charset="utf-8">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+            'use strict';
+
+            function Tools() {
+                var message = false;
+                var randomNum = false;
+
+                this.jQueryArrayToObject = function(arr) {
+                    var o = {};
+
+                    for (let i in arr) {
+                        o[arr[i].name] = arr[i].value;
+                    }
+
+                    return o;
+                }
+
+                this.addMessage = function(data) {
+                    message = data;
+
+                    return this;
+                }
+
+                this.addRandom = function(data) {
+                    randomNum = data;
+
+                    return this;
+                }
+
+                this.hasAllData = function() {
+                    return message && randomNum;
+                }
+
+                this.createResult = function() {
+                    var elm = $('<section id="result" class="result" />');
+                    var articleElm = $('<article />');
+                    var messageElm = $('<p />');
+                    var randomElm = $('<p />');
+
+                    elm.append(articleElm);
+
+                    articleElm.append(messageElm);
+                    articleElm.append(randomElm);
+
+                    messageElm.html(message);
+
+                    randomElm.html('Your lucky number is: ' + randomNum);
+
+                    $('#result').replaceWith(elm);
+
+                    message = false;
+                    randomNum = false;
+                }
+            }
+
+            var tools = new Tools();
+
+            $(document).ready(function() {
+                var socket = io.connect();
+
+                $('input[type=submit]').click(function() {
+                    var data = tools.jQueryArrayToObject($('#data').serializeArray());
+
+                    socket.emit('posting_form', data);
+                });
+
+                socket.on('updated_message', function(data) {
+                    tools.addMessage(data.message);
+
+                    if (tools.hasAllData()) {
+                        tools.createResult();
+                    }
+                });
+
+                socket.on('random_number', function(data) {
+                    tools.addRandom(data.randomNum);
+
+                    if (tools.hasAllData()) {
+                        tools.createResult();
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <section>
+            <article class="survey">
+                <h1>Dojo Survey</h1>
+                <form id="data" onsubmit="return false;">
+                    <label>Name: <input type="text" name="name" placeholder="Please, type your name."></label>
+                    <label>Dojo Location: <select name="location">
+                        <option value="chi">Chicago</option>
+                        <option value="dal">Dallas</option>
+                        <option value="la">Los Angeles</option>
+                        <option value="sea">Seattle</option>
+                        <option value="sv">Silicon Valley</option>
+                        <option value="dc">Washington D.C.</option>
+                    </select></label>
+                    <label>Favorite Language: <select name="language">
+                        <option value="js">Javascript</option>
+                        <option value="py">Python</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="node">Node</option>
+                        <option value="swift">Swift</option>
+                        <option value="oc">Objective C</option>
+                    </select>
+                    </label>
+                    <label for="comment">Comment:</label>
+                    <textarea name="comment" rows="8" cols="40"></textarea>
+                    <input type="submit" value="Send Survey" class="button">
+                </form>
+            </article>
+        </section>
+        <span id="result"></span>
+    </body>
+</html>

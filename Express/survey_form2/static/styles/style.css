@@ -1,0 +1,52 @@
+body {
+    background-color: #eee;
+    color: #000;
+    font-family: Helvetica, Arial, serif;
+}
+
+section {
+    max-width: 600px;
+    min-width: 300px;
+    margin: 1em auto;
+    background-color: #fff;
+    box-shadow: 0 1px 4px #000;
+}
+
+article {
+    padding: 0.1em 1em 3em;
+}
+
+label {
+    display: block;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+label input, label select {
+    float: right;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.result ul, .result li {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.result li span {
+    display: inline-block;
+    width: 50%;
+}
+
+.button {
+    float: right;
+}

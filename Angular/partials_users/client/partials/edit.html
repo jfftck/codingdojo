@@ -1,0 +1,52 @@
+<div ng-controller="CustomizeUsersController as CUC">
+    <form>
+        <fieldset>
+            <legend>Users Controller</legend>
+            <label>
+                First Name <input type="text" ng-model="CUC.firstName">
+            </label>
+            <label>
+                Last Name <input type="text" ng-model="CUC.lastName">
+            </label>
+            <label>
+                Favorite Language <input type="text" ng-model="CUC.favLang">
+            </label>
+            <input type="submit" value="Create User" ng-click="CUC.create()">
+            <div ng-show="CUC.users.length > 0">
+                <table style="border: 1px solid #ccc; border-spacing: 1px; border-collapes: combine; width: 100%">
+                    <thead style="color: #000; background-color: #ddd">
+                        <tr>
+                            <td>
+                                First Name
+                            </td>
+                            <td>
+                                Last Name
+                            </td>
+                            <td>
+                                Favorite Language
+                            </td>
+                            <td>
+                                Actions
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in CUC.users track by $index">
+                            <td ng-bind="user.firstName">
+                            </td>
+                            <td ng-bind="user.lastName">
+                            </td>
+                            <td ng-bind="user.favLang">
+                            </td>
+                            <td>
+                                <button type="button" ng-click="CUC.delete($index)">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </form>
+</div>

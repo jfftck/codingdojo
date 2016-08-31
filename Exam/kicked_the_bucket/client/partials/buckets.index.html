@@ -1,0 +1,37 @@
+<div ng-controller="BucketsIndexController as BIC">
+    <div style="border: 1px solid #ddd">
+        <span>Bucket List</span>
+        <button type="button" disabled="disabled">
+            Home
+        </button>
+        <button type="button" ng-click="BIC.logout()">Logout</button>
+    </div>
+    <h2>Welcome, <span ng-bind="BIC.name"></span>!</h2>
+    <form>
+        <input type="text" placeholder="Title" ng-model="BIC.bucket.title">
+        <input type="text" placeholder="Description" ng-model="BIC.bucket.description">
+        <select ng-model="BIC.bucket.tagged">
+            <option ng-selected="user.name == BIC.name" value="{{user.name}}" ng-bind="user.name" ng-repeat="user in BIC.users">
+
+            </option>
+        </select>
+        <input type="submit" value="Add to List" ng-click="BIC.create()">
+    </form>
+    <h3>Before I die I want to...</h3>
+    <div ng-repeat="bucket in BIC.buckets">
+        <label style="display: block" ng-style="BIC.checkStyle(bucket._id)" ng-init="BIC.checked[bucket._id] = bucket.complete">
+            <input type="checkbox" ng-checked="bucket.complete" ng-model="BIC.checked[bucket._id]" ng-change="BIC.complete(bucket._id)">
+            <span style="background-color: #9bf; color: #000; padding: 0.1em 0.5em; border-radius: 4px;" ng-bind="bucket.tagged"></span>
+            <span style="font-weight: bold; font-size: 110%;" ng-bind="bucket.title"></span>
+            <span ng-bind="bucket.description"></span>
+            <span ng-bind="bucket.createdAt | date: 'mediumDate'" style="color: #999; font-size: 80%;"></span>
+        </label>
+    </div>
+    <h3>List of other users (click to view profile):</h3>
+    <div ng-repeat="user in BIC.users">
+        <div ng-if="user.name != BIC.name">
+            <a style="color: blue; text-decoration: underline; cursor: pointer" ng-bind="user.name" ng-click="BIC.show(user.name)">
+            </a>
+        </div>
+    </div>
+</div>

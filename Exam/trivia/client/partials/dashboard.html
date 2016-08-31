@@ -1,0 +1,51 @@
+<div ng-controller="GamesDashboardController as GDC">
+    <div class="nav">
+        <div class="end">
+            <button type="button" ng-click="GDC.logout()">
+                Logout
+            </button>
+        </div>
+        <button type="button" disabled="disabled">
+            Home
+        </button>
+        <button type="button" ng-click="GDC.newQuestion()">
+            Add a Question
+        </button>
+    </div>
+    <div class="gamebox centered">
+        <div ng-if="GDC.message">
+            <div class="message" ng-bind="GDC.message"></div>
+        </div>
+        <div class="game">
+            <button type="button" class="play centered" ng-click="GDC.newGame()">
+                Play!
+            </button>
+            <p>
+                Click the button above to start the trivia game.
+            </p>
+        </div>
+    </div>
+    <label class='end'>Search <input type="text" ng-model="GDC.search"></label>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Score
+                </td>
+                <td>
+                    Percentage
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="game in GDC.games | filter: GDC.search">
+                <td ng-bind="game.name"></td>
+                <td ng-bind="GDC.score(game.correct, game.total)"></td>
+                <td ng-bind="GDC.percentage(game.correct, game.total)"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

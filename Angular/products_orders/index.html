@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title>Product Factory</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+        <script type="text/javascript" src="./app/app.js"></script>
+        <script type="text/javascript" src="./app/components/storeFactory.js"></script>
+        <script type="text/javascript" src="./app/products/productsController.js"></script>
+        <script type="text/javascript" src="./app/orders/ordersController.js"></script>
+    </head>
+    <body>
+        <div ng-controller="ProductsController as PC">
+            <form>
+                <fieldset>
+                    <legend>Products Controller</legend>
+                    <label>
+                        Product Name <input type="text" ng-model="PC.name">
+                    </label>
+                    <label>
+                        Product Price <input type="number" ng-model="PC.price">
+                    </label>
+                    <input type="submit" value="Add Product" ng-click="PC.addProduct()">
+                    <div ng-show="PC.products.length > 0">
+                        <table style="border: 1px solid #ccc; border-spacing: 1px; border-collapes: combine; width: 100%">
+                            <thead style="color: #000; background-color: #ddd">
+                                <tr>
+                                    <td>
+                                        Name
+                                    </td>
+                                    <td>
+                                        Price
+                                    </td>
+                                    <td>
+                                        Actions
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="product in PC.products track by $index">
+                                    <td ng-bind="product.name">
+                                    </td>
+                                    <td ng-bind="product.price | currency">
+                                    </td>
+                                    <td>
+                                        <button type="button" ng-click="PC.deleteProduct($index)">
+                                            Delete
+                                        </button>
+                                        <button type="button" ng-click="PC.newDelivery($index)">
+                                            New Delivery
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div ng-controller="OrdersController as OC">
+            <form>
+                <fieldset>
+                    <legend>Orders Controller</legend>
+                    <div ng-show="OC.products.length > 0">
+                        <table style="border: 1px solid #ccc; border-spacing: 1px; border-collapes: combine; width: 100%">
+                            <thead style="color: #000; background-color: #ddd">
+                                <tr>
+                                    <td>
+                                        Name
+                                    </td>
+                                    <td>
+                                        Price
+                                    </td>
+                                    <td>
+                                        Qty Available
+                                    </td>
+                                    <td>
+                                        Actions
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="product in OC.products track by $index" ng-hide="product.qty < 1">
+                                    <td ng-bind="product.name">
+                                    </td>
+                                    <td ng-bind="product.price | currency">
+                                    </td>
+                                    <td ng-bind="product.qty">
+                                    </td>
+                                    <td>
+                                        <button type="button" ng-click="OC.buy($index)">
+                                            Buy
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

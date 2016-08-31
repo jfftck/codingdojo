@@ -1,0 +1,33 @@
+<div ng-controller="SurveysShowController as SSC">
+    <div style="text-align:right">
+        <a href="#/surveys">Go to Polls</a>
+    </div>
+    <h2 ng-bind="SSC.survey.question"></h2>
+    <h5>Click the Vote button to choose one</h5>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    Option
+                </td>
+                <td>
+                    Current Count of Votes
+                </td>
+                <td>
+                    Action
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="option in SSC.survey.options">
+                <td ng-bind="option.option"></td>
+                <td ng-bind="option.votes.length"></td>
+                <td>
+                    <button type="button" ng-click="SSC.vote($index)">
+                        Vote
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
