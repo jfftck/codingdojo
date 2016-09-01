@@ -1,0 +1,9 @@
+<div ng-controller="FriendsShowController as FSC">
+    <form>
+        <label>First Name <input type="text" ng-model="FSC.friend.firstName" disabled="disabled"></label>
+        <label>Last Name <input type="text" ng-model="FSC.friend.lastName" disabled="disabled"></label>
+        <label>Birthday <input type="text" ng-model="FSC.friend.birthday" disabled="disabled"></label>
+        <label>User Added <input type="text" ng-model="FSC.friend.createdAt" disabled="disabled"></label>
+        <button type="button" ng-click="FSC.goBack()">Go Back</button>
+    </form>
+</div>

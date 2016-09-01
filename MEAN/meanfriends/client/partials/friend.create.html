@@ -1,0 +1,9 @@
+<div ng-controller="FriendsCreateController as FCC">
+    <form>
+        <label>First Name <input type="text" ng-model="FCC.friend.firstName"></label>
+        <label>Last Name <input type="text" ng-model="FCC.friend.lastName"></label>
+        <label>Birthday <input type="text" ng-model="FCC.friend.birthday"></label>
+        <input type="submit" value="Create" ng-click="FCC.create()">
+        <button type="button" ng-click="FCC.goBack()">Cancel</button>
+    </form>
+</div>

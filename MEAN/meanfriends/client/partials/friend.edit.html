@@ -1,0 +1,9 @@
+<div ng-controller="FriendsEditController as FEC">
+    <form>
+        <label>First Name <input type="text" ng-model="FEC.friend.firstName"></label>
+        <label>Last Name <input type="text" ng-model="FEC.friend.lastName"></label>
+        <label>Birthday <input type="text" ng-model="FEC.friend.birthday"></label>
+        <input type="submit" value="Update" ng-click="FEC.update()">
+        <button type="button" ng-click="FEC.goBack()">Cancel</button>
+    </form>
+</div>

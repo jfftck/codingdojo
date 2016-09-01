@@ -1,0 +1,21 @@
+<div ng-controller="AppointmentsCreateController as ACC">
+    <h1>New Appointment</h1>
+    <form>
+        <label>
+            Date
+            <input type="date" min="{{ACC.minDate}}" ng-model="ACC.appointment.date">
+        </label>
+        <label>
+            Time
+            <input type="date" min="8:00" max="17:00" ng-model="ACC.appointment.time">
+        </label><br>
+        <label>
+            Complain
+            <textarea rows="8" cols="40" ng-model="ACC.appointment.complain">
+            </textarea>
+        </label><br>
+        <input type="button" value="Cancel" ng-click="ACC.goBack()">
+        <input type="submit" value="Add Appointment" ng-click="ACC.create()">
+    </form>
+    <script src="/app/common/datepicker.js" charset="utf-8"></script>
+</div>

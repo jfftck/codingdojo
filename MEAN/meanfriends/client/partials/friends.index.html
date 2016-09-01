@@ -1,0 +1,44 @@
+<div ng-controller="FriendsIndexController as FIC">
+    <table>
+        <tr>
+            <td rowspan="2">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>
+                                Name
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="friend in FIC.friends | filter: FIC.filter">
+                            <td ng-bind="friend.firstName + ' ' + friend.lastName"></td>
+                            <td>
+                                <a ng-click="FIC.show($index)">Show</a>
+                            </td>
+                            <td>
+                                <a ng-click="FIC.update($index)">Edit</a>
+                            </td>
+                            <td>
+                                <a ng-click="FIC.delete($index)">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td style="vertical-align: bottom">
+                <input type="text" placeholder="Filter by ..." ng-model="FIC.filter.birthday">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" ng-click="FIC.create()">
+                    New Friend
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
