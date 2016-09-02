@@ -1,4 +1,1 @@
-# Coding Dojo
-This is the code that I created while attending Coding Dojo.
-
-Some of it very basic but it was designed to be that way per the assignment.
+# Coding DojoThis is the code that I created while attending Coding Dojo for the MEAN (MongoDB, Express, Angular, Node.js) stack.Some of it very basic but it was designed to be that way per the assignment.I have the following layout for most MEAN projects:* client	* app		* [feature_name]			* [feature_name].ctrl.js - __Angular controller__			* [feature_name].fact.js - __Angular factory__		* routes.js - __Angular routes__		* app.js - __Angular module__* server	* config		* connection.js - __Mongoose setup__		* routes.js - __Express routes__	* controllers		* [feature_name].ctrl.js - __Node/Express controller__	* models		* [feature_name].model.js - __Mongoose model__* server.js - __Node.js/Express setup__Both MEAN and Practice directories are full MEAN projects.Some projects are not complete and I am in the process of updating them.
